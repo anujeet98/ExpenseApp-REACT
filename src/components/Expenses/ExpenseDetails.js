@@ -1,7 +1,7 @@
-import Card from './Card';
-import './ExpenseItem.css';
+import Card from '../UI/Card';
+import './ExpenseDetails.css';
 
-function ExpenseDetails(props) {
+const ExpenseDetails = (props) => {
   return (
     <div className="expense-item__description">
       <h2>{props.location}</h2>
