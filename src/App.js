@@ -35,7 +35,7 @@ const App = () => {
         return [...prevExpenses, expenseData];
       });
   }
-
+  
   const deleteExpenseHandler = (id) => {
       setExpenses(oldExpenses => {
           return oldExpenses.filter(expense => expense.id!==id);
