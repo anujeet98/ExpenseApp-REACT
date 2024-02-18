@@ -4,26 +4,52 @@ import Card from "../UI/Card"
 import './ExpenseForm.css';
 
 const ExpenseForm = () => {
-    const [title, enteredTitle] = useState('');
-    const [amount, enteredAmount] = useState('');
-    const [date, enteredDate] = useState();
+    const [enteredTitle, setTitle] = useState('');
+    const [enteredAmount, setAmount] = useState('');
+    const [enteredDate, setDate] = useState('');
 
-    const inputChange = (event) => {
+    //If using single state
+    // const [inpustState, setInputState] = useState({
+    //     enteredTitle: '',
+    //     enteredAmount: '',
+    //     enteredDate: ''
+    // });
+
+    const inputChangeHandler = (event) => {
+        // if(event.target.name === "title"){
+        //     // setInputState({
+        //     //     ...inpustState,
+        //     //     enteredTitle: event.target.value
+        //     // })
+
+        //     //Insted use this. safer way
+        //     setInputState((previousState) => {
+        //         return {...previousState, enteredTitle: event.target.value}
+        //     })
+        // }
         if(event.target.name === "title")
-            enteredTitle(event.target.value);
+            setTitle(event.target.value);
         else if(event.target.name === "amount")
-            enteredAmount(event.target.value);
+            setAmount(event.target.value);
         else if(event.target.name === "date")
-            enteredDate(event.target.value);
+            setDate(event.target.value);
     }
+
+    const submitHandler = (event) => {
+        event.preventDefault(); 
+        console.log({title: enteredTitle, amount: enteredAmount, date: new Date(enteredDate)});
+    }
+
     return (
         <Card className="formContainer">
-            <div className="expenseForm">
-                <input onChange={inputChange} type="text" name="title" placeholder="Add Expense Title Here.." value={title}/>
-                <input onChange={inputChange} type="number" name="amount" placeholder="Add Expense Amount Here.." value={amount}/>
-                <input onChange={inputChange} type="date" name="date" value={date}/>
-            </div>
-            <button>Add Expense</button>
+            <form onSubmit={submitHandler}>
+                <div className="expenseForm">
+                    <input onChange={inputChangeHandler} type="text" name="title" placeholder="Add Expense Title Here.." value={enteredTitle} required/>
+                    <input onChange={inputChangeHandler} type="number" name="amount" placeholder="Add Expense Amount Here.." value={enteredAmount} required/>
+                    <input onChange={inputChangeHandler} type="date" name="date" value={enteredDate} required/>
+                </div>
+                <button type="submit">Add Expense</button>
+            </form>
         </Card>
     )
 };

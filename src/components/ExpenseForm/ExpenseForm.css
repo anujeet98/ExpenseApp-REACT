@@ -7,8 +7,6 @@
     border: 1px solid #ececec;
     background-color: #2a2a2a;
     color: white;
-    display: flex;
-    flex-direction: column;
 }
 
 .expenseForm {
@@ -30,5 +28,6 @@
     background-color: rgb(23, 78, 196);
     color: white;
     margin: 0.8rem auto;
+    float: right;
     width: 6=8rem;
 }
