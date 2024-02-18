@@ -16,3 +16,19 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.expenseForm input{
+    width: 15rem;
+    height: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.formContainer button{
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: rgb(23, 78, 196);
+    color: white;
+    margin: 0.8rem auto;
+    width: 6=8rem;
+}
