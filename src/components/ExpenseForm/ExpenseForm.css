@@ -3,7 +3,6 @@
     margin: 1rem auto;
     width: 50rem;
     max-width: 95%;
-    height: 7.3rem;
     border: 1px solid #ececec;
     background-color: #2a2a2a;
     color: white;
@@ -11,23 +10,40 @@
 
 .expenseForm {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .expenseForm input{
-    width: 15rem;
+    width: 90%;
     height: 2rem;
-    padding: 1rem;
+    padding: 1.4rem 1rem;
     border-radius: 8px;
+    font-size: medium;
 }
 
 .formContainer button{
-    padding: 0.5rem;
+    padding: 0.8rem 0.5rem;
     border-radius: 8px;
     background-color: rgb(23, 78, 196);
     color: white;
-    margin: 0.8rem auto;
-    float: right;
-    width: 6=8rem;
+    margin-top: 0.8rem;
+    margin-left: 5%;
+    width: 10rem;
+    font-size: medium;
 }
+
+
+@media (min-width: 850px) {
+    .expenseForm {
+      flex-direction: row;
+      /* align-items: center;
+      justify-content: flex-start; */
+      /* flex: 3; */
+    }
+    .formContainer button{
+        margin-left: auto;
+    }
+  }

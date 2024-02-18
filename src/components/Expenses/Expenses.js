@@ -9,18 +9,21 @@ const Expenses = (props) => {
   const filterChangeHandler = (year) => {
       setFilteredYear(year);
   }
+  const deleteItemHandler = (id) => {
+        props.onDeleteExpense(id);
+  }
   return (
     <Card className="expenses">
         <ExpenseFilter className="expense_filter" selectedYear={filteredYear} onChangeFilter={filterChangeHandler}></ExpenseFilter><br></br><br></br>
         {
             props.items.map((item) => (
                 <ExpenseItem
-                    key={item.id}
+                    onDeleteItem={deleteItemHandler}
+                    id={item.id}
                     date={item.date}
-                    location={item.location}
                     title={item.title}
                     amount={item.amount}
-                ></ExpenseItem>
+                />
             ))
         }
     </Card>

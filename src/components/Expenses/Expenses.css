@@ -5,11 +5,17 @@
     width: 50rem;
     max-width: 95%;
     background-color: rgb(31, 31, 31);
+    font-size: medium;
 }
 
 
 .expense_filter{
     color: white;
-    float: right;
     margin: 1rem auto;
+}
+
+.expense_filter select{
+    float: right;
+    padding: 0.9rem 3.5rem;
+    border-radius: 8px;
 }

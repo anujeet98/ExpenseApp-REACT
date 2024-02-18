@@ -31,14 +31,21 @@ const App = () => {
 
   const addExpenseHandler = (newExpense) => {
       const expenseData = {...newExpense, id:Math.round((Math.random()*10000)).toString()};
-      setExpenses(expenses => {
-        return [...expenses, expenseData];
+      setExpenses(prevExpenses => {
+        return [...prevExpenses, expenseData];
       });
   }
+
+  const deleteExpenseHandler = (id) => {
+      setExpenses(oldExpenses => {
+          return oldExpenses.filter(expense => expense.id!==id);
+      })
+  }
+
   return (
     <div>
       <ExpenseForm className="expenseForm" onAddExpense={addExpenseHandler}></ExpenseForm>
-      <Expenses items={expenses}></Expenses>
+      <Expenses onDeleteExpense={deleteExpenseHandler} items={expenses}></Expenses>
     </div>
   );
 }
