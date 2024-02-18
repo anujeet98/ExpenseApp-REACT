@@ -19,6 +19,7 @@ const Expenses = (props) => {
             props.items.map((item) => (
                 <ExpenseItem
                     onDeleteItem={deleteItemHandler}
+                    key={item.id}
                     id={item.id}
                     date={item.date}
                     title={item.title}
