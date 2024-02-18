@@ -3,7 +3,7 @@ import { useState } from "react";
 import Card from "../UI/Card"
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enteredTitle, setTitle] = useState('');
     const [enteredAmount, setAmount] = useState('');
     const [enteredDate, setDate] = useState('');
@@ -37,7 +37,11 @@ const ExpenseForm = () => {
 
     const submitHandler = (event) => {
         event.preventDefault(); 
-        console.log({title: enteredTitle, amount: enteredAmount, date: new Date(enteredDate)});
+        const newExpense = {title: enteredTitle, amount: enteredAmount, date: new Date(enteredDate)};
+        setTitle('');
+        setAmount('');
+        setDate('');
+        props.onAddExpense(newExpense);
     }
 
     return (
