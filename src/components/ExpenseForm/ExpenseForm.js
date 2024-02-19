@@ -7,6 +7,8 @@ const ExpenseForm = (props) => {
     const [enteredAmount, setAmount] = useState('');
     const [enteredDate, setDate] = useState('');
 
+    const [isFormVisible, setIsFormVisible] = useState(false);
+
     //If using single state
     // const [inpustState, setInputState] = useState({
     //     enteredTitle: '',
@@ -15,19 +17,10 @@ const ExpenseForm = (props) => {
     // });
 
     const inputChangeHandler = (event) => {
-        // if(event.target.name === "title"){
-        //     // setInputState({
-        //     //     ...inpustState,
-        //     //     enteredTitle: event.target.value
-        //     // })
-
-        //     //Insted use this. safer way
-        //     setInputState((previousState) => {
-        //         return {...previousState, enteredTitle: event.target.value}
-        //     })
-        // }
-        if(event.target.name === "title")
+        if(event.target.name === "title"){
             setTitle(event.target.value);
+        }
+           
         else if(event.target.name === "amount")
             setAmount(event.target.value);
         else if(event.target.name === "date")
@@ -41,18 +34,32 @@ const ExpenseForm = (props) => {
         setAmount('');
         setDate('');
         props.onAddExpense(newExpense);
+        setIsFormVisible(false);
+    }
+
+    const cancelHandler = () => {
+        setIsFormVisible(false);
     }
 
     return (
         <Card className="formContainer">
-            <form onSubmit={submitHandler}>
-                <div className="expenseForm">
-                    <input onChange={inputChangeHandler} type="text" name="title" placeholder="Add Expense Title Here.." value={enteredTitle} required/>
-                    <input onChange={inputChangeHandler} type="number" name="amount" placeholder="Add Expense Amount Here.." value={enteredAmount} required/>
-                    <input onChange={inputChangeHandler} type="date" name="date" value={enteredDate} required/>
-                </div>
-                <button type="submit">Add Expense</button>
-            </form>
+            {
+                isFormVisible ? (
+                    <form onSubmit={submitHandler} onReset={cancelHandler}>
+                        <div className="expenseForm">
+                            <input onChange={inputChangeHandler} type="text" name="title" placeholder="Add Expense Title Here.." value={enteredTitle} required/>
+                            <input onChange={inputChangeHandler} type="number" name="amount" placeholder="Add Expense Amount Here.." value={enteredAmount} required/>
+                            <input onChange={inputChangeHandler} type="date" name="date" value={enteredDate} required/>
+                        </div>
+                        <div className="buttonGroup">
+                            <button type="reset">Cancel</button>
+                            <button type="submit">Add Expense</button>
+                        </div>
+                    </form>
+                ) : (
+                    <button className="addNewExpenseBtn" onClick={()=>{setIsFormVisible(true)}}>Add new expense</button>
+                )
+            }
         </Card>
     )
 };
