@@ -8,11 +8,13 @@ const ExpenseItem = (props) => {
       props.onDeleteItem(id);
   }
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date}></ExpenseDate>
-      <ExpenseDetails amount={props.amount}  title={props.title} />
-      <button onClick={() => deleteHandler(props.id)}>Delete</button>
-    </Card>
+    <li>
+        <Card className="expense-item">
+            <ExpenseDate date={props.date}></ExpenseDate>
+            <ExpenseDetails amount={props.amount}  title={props.title} />
+            <button onClick={() => deleteHandler(props.id)}>Delete</button>
+        </Card>
+    </li>
   );
 }
 
